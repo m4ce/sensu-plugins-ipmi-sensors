@@ -31,7 +31,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version  = '>= 1.9.3'
   s.summary                = 'Sensu plugins for monitoring IPMI sensors'
   s.test_files             = s.files.grep(%r{^(test|spec|features)/})
-  s.version                = SensuPluginsipmi-sensors::Version::VER_STRING
+  s.version                = SensuPluginsIPMISensors::Version::VER_STRING
 
   s.add_runtime_dependency 'sensu-plugin',   '1.2.0'
   s.add_runtime_dependency 'rubyipmi',       '0.10.0'

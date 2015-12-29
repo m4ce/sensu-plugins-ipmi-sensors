@@ -150,6 +150,7 @@ class CheckIPMISensors < Sensu::Plugin::Check::CLI
       case sensor[:unit].downcase
         when "n/a", "nominal"
           # life's good
+          send_ok(check_name, "IPMI sensor #{name} is healthy (State: #{sensor[:state]})")
           next
 
         when "warning"
@@ -161,7 +162,7 @@ class CheckIPMISensors < Sensu::Plugin::Check::CLI
           problems += 1
 
         else
-          send_ok(check_name, "IPMI sensor #{name} is healthy (State: #{sensor[:state]})")
+          send_unknown(check_name, "IPMI sensor #{name} is unknown (State: #{sensor[:state]})")
 
       end
     end

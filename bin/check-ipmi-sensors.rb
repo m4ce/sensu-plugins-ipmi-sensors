@@ -44,21 +44,25 @@ class CheckIPMISensors < Sensu::Plugin::Check::CLI
   option :sensor,
          :description => "Comma separated list of IPMI sensors (default: ALL)",
          :long => "--sensor <SENSOR>",
+         :proc => proc { |a| a.split(',') },
          :default => []
 
   option :sensor_regex,
          :description => "Comma separated list of IPMI sensors (regex)",
          :long => "--sensor-regex <SENSOR>",
+         :proc => proc { |a| a.split(',') },
          :default => []
 
   option :ignore_sensor,
          :description => "Comma separated list of IPMI sensors to ignore",
          :long => "--ignore-sensor <SENSOR>",
+         :proc => proc { |a| a.split(',') },
          :default => []
 
   option :ignore_sensor_regex,
          :description => "Comma separated list of IPMI sensors to ignore (regex)",
          :long => "--ignore-sensor-regex <SENSOR>",
+         :proc => proc { |a| a.split(',') },
          :default => []
 
   option :warn,

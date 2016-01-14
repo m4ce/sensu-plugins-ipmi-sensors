@@ -12,6 +12,7 @@ The plugin accepts the following command line options:
 ```
 Usage: check-ipmi-sensors.rb (options)
         --driver <driver>            IPMI driver (default: auto)
+        --handlers <HANDLERS>        Comma separated list of handlers
     -H, --host <HOST>                IPMI host (default: localhost)
         --ignore-sensor <SENSOR>     Comma separated list of IPMI sensors to ignore
         --ignore-sensor-regex <SENSOR>
@@ -23,6 +24,8 @@ Usage: check-ipmi-sensors.rb (options)
     -u, --user <USER>                IPMI username (required)
     -w, --warn                       Warn instead of throwing a critical failure
 ```
+
+Use the --handlers command line option to specify which handlers you want to use for the generated events.
 
 ## Author
 Matteo Cerutti - <matteo.cerutti@hotmail.co.uk>

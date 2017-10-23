@@ -32,7 +32,7 @@ class CheckIPMISensors < Sensu::Plugin::Check::CLI
   option :provider,
          :description => "IPMI provider (default: auto)",
          :long => "--provider <PROVIDER>",
-         :in => ["any", "freeipmi", "openipmi"],
+         :in => ["any", "freeipmi", "ipmitool", "openipmi"],
          :default => "any"
 
   option :driver,

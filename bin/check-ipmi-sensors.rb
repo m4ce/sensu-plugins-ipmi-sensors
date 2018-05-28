@@ -86,7 +86,7 @@ class CheckIPMISensors < Sensu::Plugin::Check::CLI
 
   option :proxy_client,
          :description => "Send events for proxy client with host as the source",
-         :short => "-p",
+         :short => "-P",
          :long => "--proxy-client",
          :boolean => true,
          :default => false
@@ -110,6 +110,7 @@ class CheckIPMISensors < Sensu::Plugin::Check::CLI
       event = {"name" => check_name, "source" => config[:host], "status" => 0, "output" => "#{self.class.name} OK: #{msg}", "handlers" => config[:handlers]}
     else
       event = {"name" => check_name, "status" => 0, "output" => "#{self.class.name} OK: #{msg}", "handlers" => config[:handlers]}
+    end
     send_client_socket(event.to_json)
   end
 
@@ -118,6 +119,7 @@ class CheckIPMISensors < Sensu::Plugin::Check::CLI
       event = {"name" => check_name, "source" => config[:host], "status" => 1, "output" => "#{self.class.name} WARNING: #{msg}", "handlers" => config[:handlers]}
     else
       event = {"name" => check_name, "status" => 1, "output" => "#{self.class.name} WARNING: #{msg}", "handlers" => config[:handlers]}
+    end
     send_client_socket(event.to_json)
   end
 
@@ -126,6 +128,7 @@ class CheckIPMISensors < Sensu::Plugin::Check::CLI
       event = {"name" => check_name, "source" => config[:host], "status" => 2, "output" => "#{self.class.name} CRITICAL: #{msg}", "handlers" => config[:handlers]}
     else
       event = {"name" => check_name, "status" => 2, "output" => "#{self.class.name} CRITICAL: #{msg}", "handlers" => config[:handlers]}
+    end
     send_client_socket(event.to_json)
   end
 
@@ -134,6 +137,7 @@ class CheckIPMISensors < Sensu::Plugin::Check::CLI
       event = {"name" => check_name, "source" => config[:host], "status" => 3, "output" => "#{self.class.name} UNKNOWN: #{msg}", "handlers" => config[:handlers]}
     else
       event = {"name" => check_name, "status" => 3, "output" => "#{self.class.name} UNKNOWN: #{msg}", "handlers" => config[:handlers]}
+    end
     send_client_socket(event.to_json)
   end
 

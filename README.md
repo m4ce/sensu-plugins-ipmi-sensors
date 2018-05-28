@@ -23,6 +23,7 @@ Usage: check-ipmi-sensors.rb (options)
         --sensor-regex <SENSOR>      Comma separated list of IPMI sensors (regex)
     -u, --user <USER>                IPMI username (required)
     -w, --warn                       Warn instead of throwing a critical failure
+    -P, --proxy-client               Send events for proxy client with host as the source
 ```
 
 Use the --handlers command line option to specify which handlers you want to use for the generated events.

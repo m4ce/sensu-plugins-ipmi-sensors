@@ -28,11 +28,12 @@ Gem::Specification.new do |s|
   s.platform               = Gem::Platform::RUBY
   s.post_install_message   = 'You can use the embedded Ruby by setting EMBEDDED_RUBY=true in /etc/default/sensu'
   s.require_paths          = ['lib']
-  s.required_ruby_version  = '>= 1.9.3'
+  s.required_ruby_version  = '>= 2.3.0'
   s.summary                = 'Sensu plugins for monitoring IPMI sensors'
   s.test_files             = s.files.grep(%r{^(test|spec|features)/})
   s.version                = SensuPluginsIPMISensors::Version::VER_STRING
 
   s.add_runtime_dependency 'sensu-plugin',   '~> 4.0'
   s.add_runtime_dependency 'rubyipmi',       '0.10.0'
+  s.add_development_dependency 'rake',       '~> 12.3' 
 end

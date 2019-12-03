@@ -4,8 +4,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+### BREAKING CHANGES
+- Update `sensu-plugin` to `~> 4.0`
+- Update required ruby version to `~> 2.3`
+
 ### Added
-- Added bonsai build support for sensu go
+- Travis builds for bonsai asset integration
 
 ## [0.0.4] - 2016-01-14
 ### Added

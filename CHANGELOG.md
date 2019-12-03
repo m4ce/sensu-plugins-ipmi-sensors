@@ -3,6 +3,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
+## [Unreleased]
+### Added
+- Added bonsai build support for sensu go
+
 ## [0.0.4] - 2016-01-14
 ### Added
 - Added --dryrun and fixed --warn

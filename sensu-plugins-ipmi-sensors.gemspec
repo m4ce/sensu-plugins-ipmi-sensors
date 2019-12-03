@@ -10,17 +10,17 @@ else
 end
 
 Gem::Specification.new do |s|
-  s.authors                = ['Matteo Cerutti']
+  s.authors                = ['Matteo Cerutti', 'Dan Ragnar']
   s.date                   = Date.today.to_s
   s.description            = 'This plugin provides facilities for monitoring IPMI sensors'
   s.email                  = '<matteo.cerutti@hotmail.co.uk>'
   s.executables            = Dir.glob('bin/**/*').map { |file| File.basename(file) }
   s.files                  = Dir.glob('{bin,lib}/**/*') + %w(LICENSE README.md CHANGELOG.md)
-  s.homepage               = 'https://github.com/m4ce/sensu-plugins-ipmi-sensors'
+  s.homepage               = 'https://github.com/danragnar/sensu-plugins-ipmi-sensors'
   s.license                = 'MIT'
   s.metadata               = { 'maintainer'         => '@m4ce',
                                'development_status' => 'active',
-                               'production_status'  => 'stable',
+                               'production_status'  => 'devel',
                                'release_draft'      => 'false',
                                'release_prerelease' => 'false'
                               }
@@ -33,6 +33,6 @@ Gem::Specification.new do |s|
   s.test_files             = s.files.grep(%r{^(test|spec|features)/})
   s.version                = SensuPluginsIPMISensors::Version::VER_STRING
 
-  s.add_runtime_dependency 'sensu-plugin',   '1.2.0'
+  s.add_runtime_dependency 'sensu-plugin',   '~> 4.0'
   s.add_runtime_dependency 'rubyipmi',       '0.10.0'
 end

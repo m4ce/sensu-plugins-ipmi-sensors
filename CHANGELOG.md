@@ -3,13 +3,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
-## [Unreleased]
+## [0.0.5]
 ### BREAKING CHANGES
+- Sensu Go compatability
 - Update `sensu-plugin` to `~> 4.0`
 - Update required ruby version to `~> 2.3`
 
 ### Added
 - Travis builds for bonsai asset integration
+- Add --proxy-client option that submits check results to the sensu proxy client entity
 
 ## [0.0.4] - 2016-01-14
 ### Added

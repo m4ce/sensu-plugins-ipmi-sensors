@@ -84,6 +84,13 @@ class CheckIPMISensors < Sensu::Plugin::Check::CLI
          :boolean => true,
          :default => false
 
+  option :proxy_client,
+         :description => "Send events for proxy client with host as the source",
+         :short => "-P",
+         :long => "--proxy-client",
+         :boolean => true,
+         :default => false
+
   def initialize()
     super
     @ipmi = Rubyipmi.connect(config[:user], config[:password], config[:host], config[:provider], {:driver => config[:driver]})
@@ -99,22 +106,38 @@ class CheckIPMISensors < Sensu::Plugin::Check::CLI
   end
 
   def send_ok(check_name, msg)
-    event = {"name" => check_name, "status" => 0, "output" => "#{self.class.name} OK: #{msg}", "handlers" => config[:handlers]}
+    if config[:proxy_client]
+      event = {"name" => check_name, "source" => config[:host], "status" => 0, "output" => "#{self.class.name} OK: #{msg}", "handlers" => config[:handlers]}
+    else
+      event = {"name" => check_name, "status" => 0, "output" => "#{self.class.name} OK: #{msg}", "handlers" => config[:handlers]}
+    end
     send_client_socket(event.to_json)
   end
 
   def send_warning(check_name, msg)
-    event = {"name" => check_name, "status" => 1, "output" => "#{self.class.name} WARNING: #{msg}", "handlers" => config[:handlers]}
+    if config[:proxy_client]
+      event = {"name" => check_name, "source" => config[:host], "status" => 1, "output" => "#{self.class.name} WARNING: #{msg}", "handlers" => config[:handlers]}
+    else
+      event = {"name" => check_name, "status" => 1, "output" => "#{self.class.name} WARNING: #{msg}", "handlers" => config[:handlers]}
+    end
     send_client_socket(event.to_json)
   end
 
   def send_critical(check_name, msg)
-    event = {"name" => check_name, "status" => 2, "output" => "#{self.class.name} CRITICAL: #{msg}", "handlers" => config[:handlers]}
+    if config[:proxy_client]
+      event = {"name" => check_name, "source" => config[:host], "status" => 2, "output" => "#{self.class.name} CRITICAL: #{msg}", "handlers" => config[:handlers]}
+    else
+      event = {"name" => check_name, "status" => 2, "output" => "#{self.class.name} CRITICAL: #{msg}", "handlers" => config[:handlers]}
+    end
     send_client_socket(event.to_json)
   end
 
   def send_unknown(check_name, msg)
-    event = {"name" => check_name, "status" => 3, "output" => "#{self.class.name} UNKNOWN: #{msg}", "handlers" => config[:handlers]}
+    if config[:proxy_client]
+      event = {"name" => check_name, "source" => config[:host], "status" => 3, "output" => "#{self.class.name} UNKNOWN: #{msg}", "handlers" => config[:handlers]}
+    else
+      event = {"name" => check_name, "status" => 3, "output" => "#{self.class.name} UNKNOWN: #{msg}", "handlers" => config[:handlers]}
+    end
     send_client_socket(event.to_json)
   end
 
